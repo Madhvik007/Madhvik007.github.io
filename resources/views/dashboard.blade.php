@@ -10,6 +10,13 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
+                    
+                    <!-- ✅ View Products Button -->
+                    <div class="mt-4">
+                        <a href="{{ url('/products') }}" class="btn btn-primary rounded-md hover:bg-blue-600">
+                            View Products
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

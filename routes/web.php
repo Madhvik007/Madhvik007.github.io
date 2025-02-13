@@ -19,11 +19,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
  
+// ✅ Allow all users (including normal users) to view products
+// Public product listing for normal users
+Route::get('/products', [ProductController::class, 'publicIndex'])->name('products');
+
+
+// ✅ Restrict product management (create, edit, delete) to admins only
 Route::middleware(['auth', 'admin'])->group(function () {
- 
-    Route::get('admin/dashboard', [HomeController::class, 'index']);
- 
-    Route::get('/admin/products', [ProductController::class, 'index'])->name('admin/products');
     Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin/products/create');
     Route::post('/admin/products/save', [ProductController::class, 'save'])->name('admin/products/save');
     Route::get('/admin/products/edit/{id}', [ProductController::class, 'edit'])->name('admin/products/edit');
